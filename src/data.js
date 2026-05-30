@@ -16,9 +16,8 @@ export const headerData = {
         { label: "Leadership", href: "#leadership" }
       ]
     },
-
+    { label: "TRAINING CENTRE", href: "#training-section" },
     { label: "ADMISSIONS", href: "#admissions" },
-    { label: "ACADEMICS", href: "#academics" },
     { label: "CONTACT", href: "#contact" },
   ]
 };
@@ -38,7 +37,7 @@ export const sidebarData = {
     { label: "Research & Development", href: "#research" }
   ],
   events: [
-    {
+    /*{
       day: "28",
       month: "MAY",
       title: "National Leadership Summit 2026",
@@ -49,10 +48,10 @@ export const sidebarData = {
       month: "JUN",
       title: "International HR Conclave",
       location: "BIMHRD Seminar Hall"
-    }
+    }*/
   ],
   newsFeed: [
-    {
+    /*{
       title: "BIMM Ranked Among Top 10 B-Schools in Maharashtra by Business Today.",
       date: "May 22, 2026",
       isNew: true
@@ -61,15 +60,15 @@ export const sidebarData = {
       title: "Registration deadline extended for Nursing Executive Program.",
       date: "May 10, 2026",
       isNew: false
-    }
+    }*/
   ]
 };
 
 export const institutesData = [
   {
     id: 1,
-    name: "Balaji Institute of Nursing (BIMN), Nashik",
-    description: "Balaji Institute of Nursing (BIMM), Nashik. Providing top-tier academic standards, robust infrastructures, and excellent dynamic placements.",
+    name: "Balaji Institute Of Paramedical And Nurs (BIPAN) Nashik",
+    description: "Balaji Institute Of Paramedical And Nurs (BIPAN) Nashik. Providing top-tier academic standards, robust infrastructures, and excellent dynamic placements.",
     websiteUrl: "#bimm-web",
     coursesUrl: "#bimm-courses",
     gallery: [

@@ -27,9 +27,6 @@ function InstituteCard({ inst }) {
 
         {/* Premium Overlays & Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
-          <span className="bg-blue-950/90 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider backdrop-blur-sm border border-white/10 shadow">
-            ⭐ NAAC A+ Accredited
-          </span>
           <span className="bg-emerald-600/90 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider backdrop-blur-sm shadow w-max">
             🟢 Admissions Open
           </span>
@@ -68,7 +65,7 @@ function InstituteCard({ inst }) {
           {/* Location & Estd */}
           <div className="flex justify-between items-center text-xs text-gray-400 font-semibold mb-2">
             <span className="flex items-center text-orange-600">📍 Nashik, Maharashtra</span>
-            <span>Estd: 1999</span>
+            <span>Estd: 2017</span>
           </div>
 
           {/* Title */}
@@ -79,7 +76,7 @@ function InstituteCard({ inst }) {
           {/* काउंटर किंवा स्टॅट्स (Features Grid) */}
           <div className="grid grid-cols-3 gap-2 bg-gray-50 p-2 rounded-lg text-center text-[11px] font-bold text-gray-600 mb-4 border border-gray-100 max-w-sm">
             <div className="border-r border-gray-200 last:border-0 py-0.5">
-              <p className="text-blue-900 font-extrabold text-sm">45+</p>
+              <p className="text-blue-900 font-extrabold text-sm">2+</p>
               <p className="text-gray-400 text-[9px] uppercase tracking-wider">Courses</p>
             </div>
             <div className="border-r border-gray-200 last:border-0 py-0.5">

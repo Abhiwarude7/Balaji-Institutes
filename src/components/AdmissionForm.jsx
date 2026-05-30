@@ -81,7 +81,8 @@ export default function AdmissionForm({ onClose }) {
             <div>
               <label className="block text-xs font-bold text-blue-950 mb-1">संस्था / कोर्स निवडा (Select Institute) *</label>
               <select name="course" value={formData.course} onChange={handleChange} className="w-full border border-gray-200 rounded-xl px-4 py-2.5 bg-gray-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium">
-                <option value="Nursing, Nashik">Nursing, Nashik</option>
+                <option value="Nursing, Nashik">A.N.M (Assistant Nurse and Midwifery Course)</option>
+                <option value="Nursing, Nashik">O.T ASSISTANT (Operation Theatre Assistant Course)</option>
               </select>
             </div>
 

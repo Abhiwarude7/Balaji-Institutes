@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { headerData } from '../data';
 import AdmissionForm from './AdmissionForm'; 
+import BalajiLogo from '../assets/BalajinursLogo.jpeg'
 
 export default function Header({ onNavigate }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,10 +78,13 @@ export default function Header({ onNavigate }) {
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
           
           <div onClick={() => onNavigate('home-section')} className="flex items-center space-x-3.5 group cursor-pointer">
-            <div className="relative bg-gradient-to-br from-orange-500 via-amber-500 to-orange-600 text-white w-12 h-12 rounded-xl flex items-center justify-center font-black text-2xl shadow-lg shadow-orange-500/30 transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-              B
-              <span className="absolute -top-2.5 -right-1.5 text-base transform -rotate-12 drop-shadow-md">🎓</span>
-            </div>
+          <div className="relative border-4 border-gray-100 rounded-full w-14 h-14 p-0.5 flex items-center justify-center shadow-md bg-white group-hover:scale-105 group-hover:shadow-orange-500/20 transition-all duration-300">
+          <img 
+            src={BalajiLogo}
+            alt="Balaji Institute of Paramedical & Nurse, Nashik Logo" 
+            className="w-full h-full object-contain rounded-full"
+          />
+        </div>
             <div>
               <h1 className="text-2xl font-black text-blue-950 tracking-tight leading-none group-hover:text-orange-500 transition-colors">
                 BALAJI
@@ -112,19 +116,19 @@ export default function Header({ onNavigate }) {
               <span className="absolute right-4 top-2.5 text-sm grayscale opacity-60 group-focus-within:opacity-100 transition-opacity">🔍</span>
             </div>
 
-            <div className="hidden md:flex items-center space-x-2">
-              {socialLinks.map((social, sIdx) => (
-                <a
-                  key={sIdx}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-7 h-7 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-xs font-black shadow-sm transition-all duration-300 hover:text-white hover:scale-110 hover:shadow-md ${social.bg}`}
-                >
-                  {social.display}
-                </a>
-              ))}
-            </div>
+            <div className="flex items-center space-x-2">
+  {socialLinks.map((social, sIdx) => (
+    <a
+      key={sIdx}
+      href={social.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`w-8 h-8 rounded-full bg-gray-100 text-gray-700 flex items-center justify-center text-xs font-bold shadow-sm border border-gray-200 transition-all duration-300 hover:text-white hover:scale-110 hover:shadow-md ${social.bg}`}
+    >
+      {social.display}
+    </a>
+  ))}
+</div>
 
             {/* Mobile Hamburger Toggle */}
             <button 

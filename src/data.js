@@ -23,11 +23,11 @@ export const headerData = {
 };
 
 export const sliderImages = [
-  "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600",
-  "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600",
-  "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600",
-  "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600",
-  "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600"
+  "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&auto=format&fit=crop", 
+  "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800&auto=format&fit=crop", 
+  "https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=800&auto=format&fit=crop", 
+  "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&auto=format&fit=crop", 
+  "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&auto=format&fit=crop"
 ];
 
 export const sidebarData = {

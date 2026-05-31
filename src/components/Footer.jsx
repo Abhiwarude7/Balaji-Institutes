@@ -35,7 +35,14 @@ export default function Footer({ onNavigate }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Inquiry Submitted:", formData);
+    
+    // WhatsApp Integration Logic
+    const whatsappNumber = "919511283076"; // Updated to match your central office info phone number
+    const whatsappMessage = `Hello Sir,\nName: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}\nThank You.`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    
+    window.open(whatsappUrl, "_blank");
+
     setIsSubmitted(true);
     setFormData({ name: '', email: '', message: '' });
     setTimeout(() => setIsSubmitted(false), 3000);
@@ -86,47 +93,22 @@ export default function Footer({ onNavigate }) {
         </div>
 
         {/* ✉️ Quick Inquiry Form */}
-        <div>
-          <h4 className="font-bold text-sm text-orange-400 uppercase tracking-widest mb-4 border-b border-blue-900 pb-2">Quick Inquiry</h4>
-          
-          {isSubmitted ? (
-            <div className="bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 rounded p-4 text-center font-bold text-xs uppercase tracking-wide">
-              ✓ Message Sent Successfully!
-            </div>
-          ) : (
-            <form className="space-y-2 text-black" onSubmit={handleSubmit}>
-              <input 
-                type="text" 
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                placeholder="Name" 
-                required
-                className="w-full p-2.5 rounded text-sm bg-white focus:outline-none focus:ring-2 focus:ring-orange-500" 
-              />
-              <input 
-                type="email" 
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="Email" 
-                required
-                className="w-full p-2.5 rounded text-sm bg-white focus:outline-none focus:ring-2 focus:ring-orange-500" 
-              />
-              <textarea 
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                placeholder="Message" 
-                rows="2" 
-                required
-                className="w-full p-2.5 rounded text-sm bg-white focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none"
-              ></textarea>
-              <button type="submit" className="w-full bg-orange-500 text-white font-bold py-2 rounded hover:bg-orange-600 uppercase tracking-widest transition-all text-xs active:scale-[0.98]">
-                Contact Us
-              </button>
-            </form>
-          )}
+        <div> 
+          <h4 className="font-bold text-sm text-orange-400 uppercase tracking-widest mb-4 border-b border-blue-900 pb-2"> Quick Inquiry </h4> 
+          {isSubmitted ? ( 
+            <div className="bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 rounded p-4 text-center font-bold text-xs uppercase tracking-wide"> 
+              ✓ Thank You! Your Message Has Been Sent Successfully. 
+            </div> 
+          ) : ( 
+            <form className="space-y-2 text-black" onSubmit={handleSubmit}> 
+              <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Enter Your Name" required className="w-full p-2.5 rounded text-sm bg-white focus:outline-none focus:ring-2 focus:ring-orange-500" /> 
+              <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="Enter Your Email" required className="w-full p-2.5 rounded text-sm bg-white focus:outline-none focus:ring-2 focus:ring-orange-500" /> 
+              <textarea name="message" value={formData.message} onChange={handleInputChange} placeholder="Enter Your Message" rows="3" required className="w-full p-2.5 rounded text-sm bg-white focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none" /> 
+              <button type="submit" className="w-full bg-orange-500 text-white font-bold py-2 rounded hover:bg-orange-600 uppercase tracking-widest transition-all text-xs active:scale-[0.98]"> 
+                Contact Us 
+              </button> 
+            </form> 
+          )} 
         </div>
       </div>
 

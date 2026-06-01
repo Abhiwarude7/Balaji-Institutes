@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import campusImg from '../assets/nursingstudent.png'
+import NursingImg from '../assets/NursingHostipal.jpeg'
+import NursPhoto from '../assets/NursingHospitalImg.jpeg'
+import NursImg from '../assets/Nursing2.jpeg'
+import Nursing3 from '../assets/Nursing3.jpeg'
+import Nursing4 from '../assets/Nursing4.jpeg'
 
 export default function ProductGallery() {
   const galleryImages = [
-    { id: 1, src: campusImg, title: "Campus Life", category: "Campus" },
-     { id: 2, src: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&auto=format&fit=crop&q=60", title: "Graduation Ceremony", category: "Events" },
-    { id: 3, src: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600&auto=format&fit=crop&q=60", title: "Classroom Lectures", category: "Academics" },
-    { id: 4, src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&auto=format&fit=crop&q=60", title: "Group Discussion", category: "Academics" },
-    { id: 5, src: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&auto=format&fit=crop&q=60", title: "Library Study", category: "Campus" },
-    { id: 6, src: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&auto=format&fit=crop&q=60", title: "Annual Seminar", category: "Events" },
+    { id: 1, src: campusImg, category: "Campus" },
+     { id: 2, src: Nursing4, category: "Events" },
+    { id: 3, src: NursingImg, category: "Academics" },
+    { id: 4, src: NursPhoto, category: "Academics" },
+    { id: 5, src: NursImg, category: "Campus" },
+    { id: 6, src: Nursing3, category: "Events" },
   ];
 
   const [selectedImageIdx, setSelectedImageIdx] = useState(null);

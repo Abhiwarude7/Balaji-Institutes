@@ -42,7 +42,7 @@ export default function Header({ onNavigate }) {
           <div className="bg-gradient-to-r from-blue-950 via-slate-900 to-blue-950 text-white text-xs py-2.5 px-6 flex flex-col lg:flex-row justify-between items-center gap-3 border-b border-orange-500/20">
             <div className="text-gray-300 font-medium tracking-wide flex items-center gap-2">
               <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              Balaji Institutes Admissions 2026-27 Open
+              Balaji Institute Of Paramedical And Nurs Admissions 2026-27 Open
             </div>
             <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 font-semibold tracking-wider">
               {headerData.utilityLinks.map((link, idx) => {
@@ -87,10 +87,10 @@ export default function Header({ onNavigate }) {
         </div>
             <div>
               <h1 className="text-2xl font-black text-blue-950 tracking-tight leading-none group-hover:text-orange-500 transition-colors">
-                BALAJI
+                BALAJI INSTITUTE 
               </h1>
               <p className="text-[9px] font-black text-gray-400 tracking-[0.25em] mt-1.5">
-                I N S T I T U T E S
+                Of Paramedical And Nurs
               </p>
             </div>
           </div>

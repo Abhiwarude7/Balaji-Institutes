@@ -112,18 +112,27 @@ export default function Footer({ onNavigate }) {
         </div>
       </div>
 
-      {/* 🔒 Copyright Footer */}
-      <div className="max-w-7xl mx-auto px-4 pt-5 flex flex-col sm:flex-row justify-between items-center text-gray-400 text-xs gap-3 font-medium">
-        <p>© {new Date().getFullYear()} BALAJI INSTITUTES. ALL RIGHTS RESERVED.</p>
-        <div className="flex items-center space-x-3 flex-wrap justify-center">
-          {LEGAL_LINKS.map((link, idx) => (
-            <React.Fragment key={idx}>
-              <a href={link.href} className="hover:underline hover:text-white transition-colors">{link.name}</a>
-              {idx < LEGAL_LINKS.length - 1 && <span className="text-gray-600">|</span>}
-            </React.Fragment>
-          ))}
-        </div>
-      </div>
-    </footer>
+{/* 🔒 Copyright Footer */}
+<div className="max-w-7xl mx-auto px-4 pt-5 flex flex-col sm:flex-row justify-between items-center text-gray-400 text-xs gap-3 font-medium">
+  
+  {/* डावा भाग: कॉपीराईट */}
+  <p>© {new Date().getFullYear()} BALAJI INSTITUTES. ALL RIGHTS RESERVED.</p>
+  
+  {/* मधला भाग: Developed By (नवीन जोडलेला) */}
+  <p className="text-gray-500 font-semibold tracking-wide hover:text-gray-300 transition-colors">
+    Developed by <span className="text-orange-500">Abhi Warude</span>
+  </p>
+  
+  {/* उजवा भाग: लीगल लिंक्स */}
+  <div className="flex items-center space-x-3 flex-wrap justify-center">
+    {LEGAL_LINKS.map((link, idx) => (
+      <React.Fragment key={idx}>
+        <a href={link.href} className="hover:underline hover:text-white transition-colors">{link.name}</a>
+        {idx < LEGAL_LINKS.length - 1 && <span className="text-gray-600">|</span>}
+      </React.Fragment>
+    ))}
+  </div>
+</div>
+</footer>
   );
 }

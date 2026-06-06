@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { institutesData } from '../data';
+import AdmissionForm from './AdmissionForm';
 
-function InstituteCard({ inst }) {
-  // जर gallery नसेल तर inst.image डीफॉल्ट वापरावी
+// १. इन्स्टिट्यूट कार्ड कंपोनंट (यामध्ये onApply प्रोप घेतला आहे)
+function InstituteCard({ inst, onApply }) {
   const [activeImage, setActiveImage] = useState(inst.gallery?.[0] || inst.image);
   const [isHovered, setIsHovered] = useState(false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
@@ -13,10 +14,8 @@ function InstituteCard({ inst }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* १. डावा भाग: इमेज आणि गॅलरी थंबनेल्स (Left Section for Image) */}
+      {/* डावा भाग: इमेज आणि गॅलरी थंबनेल्स */}
       <div className="relative w-full md:w-[40%] h-56 md:h-auto min-h-[240px] overflow-hidden bg-gray-100 flex-shrink-0">
-        
-        {/* Main Image */}
         <img 
           src={activeImage} 
           alt={inst.name} 
@@ -25,14 +24,12 @@ function InstituteCard({ inst }) {
           onClick={() => setIsLightboxOpen(true)}
         />
 
-        {/* Premium Overlays & Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
           <span className="bg-emerald-600/90 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider backdrop-blur-sm shadow w-max">
             🟢 Admissions Open
           </span>
         </div>
 
-        {/* Quick View Overlay */}
         <div 
           onClick={() => setIsLightboxOpen(true)}
           className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer z-0"
@@ -42,7 +39,6 @@ function InstituteCard({ inst }) {
           </span>
         </div>
         
-        {/* फोटो गॅलरी थंबनेल्स (Hovrable Thumbnails) */}
         {inst.gallery && inst.gallery.length > 1 && (
           <div className="absolute bottom-3 left-3 right-3 flex justify-end space-x-1.5 z-10">
             {inst.gallery.map((img, idx) => (
@@ -59,21 +55,18 @@ function InstituteCard({ inst }) {
         )}
       </div>
 
-      {/* २. उजवा भाग: कॉलेज कंटेंन्ट आणि बटन्स (Right Section for Content & Actions) */}
+      {/* उजवा भाग: कॉलेज कंटेंन्ट आणि बटन्स */}
       <div className="p-6 flex flex-col justify-between flex-grow">
         <div>
-          {/* Location & Estd */}
           <div className="flex justify-between items-center text-xs text-gray-400 font-semibold mb-2">
             <span className="flex items-center text-orange-600">📍 Nashik, Maharashtra</span>
             <span>Estd: 2017</span>
           </div>
 
-          {/* Title */}
           <h3 className="font-black text-lg md:text-xl text-blue-950 mb-3 leading-snug group-hover:text-orange-500 transition-colors duration-200">
             {inst.name}
           </h3>
           
-          {/* काउंटर किंवा स्टॅट्स (Features Grid) */}
           <div className="grid grid-cols-3 gap-2 bg-gray-50 p-2 rounded-lg text-center text-[11px] font-bold text-gray-600 mb-4 border border-gray-100 max-w-sm">
             <div className="border-r border-gray-200 last:border-0 py-0.5">
               <p className="text-blue-900 font-extrabold text-sm">2+</p>
@@ -94,21 +87,20 @@ function InstituteCard({ inst }) {
           </p>
         </div>
         
-        {/* प्रीमियम ॲक्शन बटन्स */}
         <div className="flex text-center text-xs font-black tracking-wider gap-3 max-w-xs md:max-w-sm">
-
-          <a 
-            href={inst.coursesUrl}
-            className="flex-1 bg-orange-500 text-white py-3 px-4 rounded-lg hover:bg-orange-600 hover:shadow-orange-500/30 transition-all duration-300 uppercase flex items-center justify-center gap-1.5 shadow-md shadow-orange-500/10"
+          {/* पॅरेंट फंक्शन कॉल केले जे संपूर्ण स्क्रीनवर फॉर्म उघडेल */}
+          <button 
+            onClick={onApply} 
+            className="flex-1 bg-orange-500 text-white py-3 px-4 rounded-lg hover:bg-orange-600 hover:shadow-orange-500/30 transition-all duration-300 uppercase flex items-center justify-center gap-1.5 shadow-md shadow-orange-500/10 cursor-pointer"
           >
             <span>Apply Now</span> 🚀
-          </a>
+          </button>
         </div>
       </div>
 
       {/* Lightbox Modal */}
       {isLightboxOpen && (
-        <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4 animate-fadeIn">
+        <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4">
           <button 
             onClick={() => setIsLightboxOpen(false)}
             className="absolute top-6 right-6 text-white text-3xl font-bold bg-white/10 w-12 h-12 rounded-full hover:bg-white/20 transition-colors"
@@ -125,10 +117,12 @@ function InstituteCard({ inst }) {
   );
 }
 
-// मेन पॅरेंट लिस्ट लेआउट
+// २. मेन पॅरेंट लिस्ट लेआउट (स्टेट इथे शिफ्ट केली आहे)
 export default function AdvancedInstituteGrid() {
+  const [selectedInstitute, setSelectedInstitute] = useState(null); // कोणत्या कॉलेजचा फॉर्म आहे ते ट्रॅक करेल
+
   return (
-    <div className="w-full bg-gray-50/50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="w-full bg-gray-50/50 py-12 px-4 sm:px-6 lg:px-8 relative">
       <div className="max-w-5xl mx-auto">
         
         {/* हेडर सेक्शन */}
@@ -144,13 +138,25 @@ export default function AdvancedInstituteGrid() {
           </div>
         </div>
 
-        {/* लिस्ट लेआउट (Adva/Horizontal साठी grid-cols-1 ठेवून गॅप दिला आहे) */}
+        {/* लिस्ट लेआउट */}
         <div className="flex flex-col gap-8">
           {institutesData.map((inst) => (
-            <InstituteCard key={inst.id} inst={inst} />
+            <InstituteCard 
+              key={inst.id} 
+              inst={inst} 
+              onApply={() => setSelectedInstitute(inst)} // क्लिक केल्यावर कॉलेज डेटा सेव्ह होईल
+            />
           ))}
         </div>
       </div>
+
+      {/* ३. मुख्य बदल: ॲडमिशन फॉर्म आता संपूर्ण मेन स्क्रीनच्या वर (Overlay) ओपन होईल */}
+      {selectedInstitute && (
+        <AdmissionForm 
+          inst={selectedInstitute} 
+          onClose={() => setSelectedInstitute(null)} // फॉर्म बंद केल्यावर स्टेट रीसेट होईल
+        />
+      )}
     </div>
   );
 }

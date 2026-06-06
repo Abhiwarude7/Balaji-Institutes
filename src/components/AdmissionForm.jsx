@@ -5,7 +5,7 @@ export default function AdmissionForm({ onClose }) {
     name: '',
     email: '',
     phone: '',
-    course: 'BIMM, Nashik',
+    course: 'A.N.M (Assistant Nurse and Midwifery Course), Nashik', // Default value updated
     message: ''
   });
   const [loading, setLoading] = useState(false);
@@ -15,29 +15,39 @@ export default function AdmissionForm({ onClose }) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
 
-    // इथं तुमची Google Apps Script ची Web App URL टाका
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwvWhB2l1Ua9lnGC7XU5C7z54q6r8I9BS72B9grFoYfPyKkGldrfvRS4fDluLr36q7u/exec";
+  // तुमची Google Apps Script ची Web App URL
+  const GOOGLE_SCRIPT_URL ="https://script.google.com/macros/s/AKfycbzBbHfbO2MgI3XSWF2lek-QcwA8IWOeKkHFe-GwVSJHoKvt3UKO1hX_CmMIlZP9B3iA/exec";
+  try {
+    // आपण पुन्हा 'no-cors' वापरत आहोत जेणेकरून ब्राउझर एरर देणार नाही
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors', 
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+    
+    // 'no-cors' मुळे गुगल डेटा स्वीकारेल आणि आपण इथे थेट सक्सेस मेसेज दाखवू शकतो
+    //alert("अभिनंदन! तुमचा डेटा यशस्वीरित्या गुगल शीटमध्ये जमा झाला आहे. 👍");
+    
+    setSubmitted(true);
+    setFormData({ 
+      name: '', 
+      email: '', 
+      phone: '', 
+      course: 'A.N.M (Assistant Nurse and Midwifery Course), Nashik', 
+      message: '' 
+    });
 
-    try {
-      await fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors', // CORS एरर टाळण्यासाठी
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-      
-      setSubmitted(true);
-      setFormData({ name: '', email: '', phone: '', course: 'BIMM, Nashik', message: '' });
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("काहीतरी चूक झाली, कृपया पुन्हा प्रयत्न करा.");
-    }
-    setLoading(false);
-  };
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    alert("काहीतरी चूक झाली, कृपया पुन्हा प्रयत्न करा.");
+  }
+  setLoading(false);
+};
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
@@ -81,8 +91,8 @@ export default function AdmissionForm({ onClose }) {
             <div>
               <label className="block text-xs font-bold text-blue-950 mb-1">संस्था / कोर्स निवडा (Select Institute) *</label>
               <select name="course" value={formData.course} onChange={handleChange} className="w-full border border-gray-200 rounded-xl px-4 py-2.5 bg-gray-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all font-medium">
-                <option value="Nursing, Nashik">A.N.M (Assistant Nurse and Midwifery Course)</option>
-                <option value="Nursing, Nashik">O.T ASSISTANT (Operation Theatre Assistant Course)</option>
+                <option value="A.N.M (Assistant Nurse and Midwifery Course), Nashik">A.N.M (Assistant Nurse and Midwifery Course)</option>
+                <option value="O.T ASSISTANT (Operation Theatre Assistant Course), Nashik">O.T ASSISTANT (Operation Theatre Assistant Course)</option>
               </select>
             </div>
 

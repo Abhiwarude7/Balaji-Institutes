@@ -1,7 +1,7 @@
 import React from 'react';
-import founderImg from '../assets/Admin&founder.jpeg';
-import adminImg from '../assets/Admin.jpeg';
-import OfficerImg from '../assets/Officer.jpeg';
+import founderImg from '../assets/Admin&founder (2).jpeg';
+import adminImg from '../assets/Admin (2).jpeg';
+import OfficerImg from '../assets/Officer (2).jpeg';
 export default function Trustees() {
   // विश्वस्तांचा डायनॅमिक डेटा
   const trusteesData = [

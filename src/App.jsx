@@ -84,7 +84,7 @@ function App() {
       {/* <Academics />  */}
       <TrainingCentre />
 
-      <GoogleReviews />
+      {/*<GoogleReviews />*/}
 
       {/* कॉलेजची प्रमुख वैशिष्ट्ये (Key Features) */}
       <KeyFeatures />
